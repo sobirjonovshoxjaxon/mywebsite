@@ -1,12 +1,21 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+// PageController 
+Route::get('/', [PageController::class, 'index'])->name('index.page');
+Route::get('/single/page', [PageController::class, 'single'])->name('single.page');
+
+
+
+
+
+
+// Laravel Breeze
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
