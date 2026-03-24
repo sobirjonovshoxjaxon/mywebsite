@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,10 @@ Route::get('/single/page', [PageController::class, 'single'])->name('single.page
 //AdminController 
 Route::get('logout',[AdminController::class, 'logout'])->name('logout.page');
 Route::get('admin/index',[AdminController::class, 'index'])->name('admin.index');
+
+
+//PostController 
+Route::resource('/posts', PostController::class);
 
 
 
