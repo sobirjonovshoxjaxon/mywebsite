@@ -42,6 +42,7 @@
 	          <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
 	          <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
 	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+	          <li class="nav-item"><a href="{{ route('login')}}" class="nav-link"><span>Login</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -427,9 +428,10 @@
           </div>
         </div>
         <div class="row d-flex">
+
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/mages/image_1.jpg')}}');">
+              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/images/image_1.jpg')}}');">
               </a>
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
@@ -439,14 +441,14 @@
 	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
 	                </p>
                 </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <h3 class="heading"><a href="{{ route('single.page')}}">Why Lead Generation is Key for Business Growth</a></h3>
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/mages/image_2.jpg')}}');">
+              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/images/image_2.jpg')}}');">
               </a>
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
@@ -456,14 +458,14 @@
 	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
 	                </p>
                 </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <h3 class="heading"><a href="{{ route('single.page')}}">Why Lead Generation is Key for Business Growth</a></h3>
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry">
-              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/mages/image_3.jpg')}}');">
+              <a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/images/image_3.jpg')}}');">
               </a>
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center mb-3 meta">
@@ -473,11 +475,13 @@
 	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
 	                </p>
                 </div>
-                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <h3 class="heading"><a href="{{ route('single.page')}}">Why Lead Generation is Key for Business Growth</a></h3>
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
               </div>
             </div>
           </div>
+		
+
         </div>
       </div>
     </section>

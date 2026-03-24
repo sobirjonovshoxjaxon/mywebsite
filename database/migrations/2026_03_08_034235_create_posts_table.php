@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('short_content');
             $table->text('content');
+            $table->string('user_type')->default('user');
             $table->timestamps();
         });
     }
