@@ -4,54 +4,43 @@
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Post Table</h4>
+                    <h4>Posts Table</h4>
+                    <a href="{{ route('posts.create')}}" class="btn btn-success">Create</a>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>id</th>
+                          <th>Title</th>
+                          <th>Image</th>
+                          <th>Short content</th>
+                          <th>Content</th>
+                          <th>Created at</th>
+                          <th>Updated at</th>
+                          <th colspan="4">Action</th>
                         </tr>
+
+                      @foreach ($posts as $post)  
                         <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td>
-                            <div class="badge badge-success">Active</div>
-                          </td>
-                          <td><a href="#" class="btn btn-primary">Detail</a></td>
+                            <td>1</td>
+                            <td>Irwansyah Saputra</td>
+                            <td>Image part</td>
+                            <td>Short Content</td>
+                            <td>lorem Ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iusto tenetur provident.</td>
+                            <td>26.03.2026</td>
+                            <td>26.03.2026</td>
+                            <td>
+                              <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
+                            </td>
+                            <td>
+                              <a href="" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                              <a href="" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td>
-                            <div class="badge badge-success">Active</div>
-                          </td>
-                          <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td>
-                            <div class="badge badge-danger">Not Active</div>
-                          </td>
-                          <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td>
-                            <div class="badge badge-success">Active</div>
-                          </td>
-                          <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tr>
+                      @endforeach
                       </table>
                     </div>
                   </div>
