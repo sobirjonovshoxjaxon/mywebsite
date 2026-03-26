@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 // PageController 
 Route::get('/', [PageController::class, 'index'])->name('index.page');
-Route::get('/single/page', [PageController::class, 'single'])->name('single.page');
+Route::get('/single/page/{post}', [PageController::class, 'single'])->name('single.page');
 
 //AdminController 
 Route::get('logout',[AdminController::class, 'logout'])->name('logout.page');
