@@ -14,6 +14,7 @@
                         @csrf 
 
                         <div class="form-group">
+                            <label for="">Title</label>
                             <div class="input-group mb-2">
                                 <input name="title" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Title">
                             </div>

@@ -16,25 +16,23 @@
                           <th>Image</th>
                           <th>Short content</th>
                           <th>Content</th>
-                          <th>Created at</th>
-                          <th>Updated at</th>
-                          <th colspan="4">Action</th>
+                          <th colspan="3">Action</th>
                         </tr>
 
                       @foreach ($posts as $post)  
                         <tr>
-                            <td>1</td>
-                            <td>Irwansyah Saputra</td>
-                            <td>Image part</td>
-                            <td>Short Content</td>
-                            <td>lorem Ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iusto tenetur provident.</td>
-                            <td>26.03.2026</td>
-                            <td>26.03.2026</td>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>
+                              <img width="100px;" src="{{ asset('storage/'.$post->image)}}" alt="">
+                            </td>
+                            <td>{{ $post->short_content }}</td>
+                            <td>{{ $post->content }}</td>
                             <td>
                               <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
                             </td>
                             <td>
-                              <a href="" class="btn btn-warning">Edit</a>
+                              <a href="{{ route('posts.edit',['post' => $post->id])}}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
                               <a href="" class="btn btn-danger">Delete</a>

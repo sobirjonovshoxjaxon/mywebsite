@@ -35,8 +35,8 @@ class PostRequest extends FormRequest
 
             'title.required' => 'Sarlavhani kiriting',
             'image.required' => 'Faylni yuklang',
-            'short_content' => 'Qisqa izohni kiriting',
-            'content' => 'Batafsil ma\'lumotni kiriting',
+            'short_content.required' => 'Qisqa izohni kiriting',
+            'content.required' => 'Batafsil ma\'lumotni kiriting',
         ];
     }
 }

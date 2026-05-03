@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -30,8 +31,22 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-      
 
+       if($request->hasFile('image')){
+
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->StoreAs('post-photos',$fileName);
+       }
+      
+        $post = Post::create([
+
+            'title' => $request->title,
+            'image' => $path ?? 'avatar.jpg',
+            'short_content' => $request->short_content,
+            'content' => $request->content,
+        ]);
+
+        return to_route('posts.index');
        
     }
 
@@ -46,17 +61,37 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        if($request->hasFile('image')){
+
+           if(isset($post->image)){
+
+                Storage::delete($post->image);
+           }
+
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('post-photos',$fileName);
+            
+        }
+
+        $post->update([
+
+            'title' => $post->title,
+            'image' => $path ?? $post->image,
+            'short_content' => $post->short_content,
+            'content' => $post->content,
+        ]);
+
+        return to_route('posts.index');
     }
 
     /**
