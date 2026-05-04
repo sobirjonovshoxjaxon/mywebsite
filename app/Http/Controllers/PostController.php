@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(9);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -85,10 +85,10 @@ class PostController extends Controller
 
         $post->update([
 
-            'title' => $post->title,
+            'title' => $request->title,
             'image' => $path ?? $post->image,
-            'short_content' => $post->short_content,
-            'content' => $post->content,
+            'short_content' => $request->short_content,
+            'content' => $request->content,
         ]);
 
         return to_route('posts.index');
@@ -97,8 +97,14 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+       if($post->image != ""){
+            Storage::delete($post->image);
+       }
+
+       $post->delete();
+
+       return redirect()->back();
     }
 }

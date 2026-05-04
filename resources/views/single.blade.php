@@ -7,8 +7,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
           <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
-            <h1 class="mb-3 bread">Blog Single Post</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Author name:John</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('index.page')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
           <div class="col-lg-8 ftco-animate">
             <h2 class="mb-3">{{ $post->title }}</h2>
             <p>
-              <img src="{{ asset ('assets/images/image_3.jpg')}}" alt="" class="img-fluid">
+              <img src="{{ asset ('storage/'.$post->image)}}" alt="" class="img-fluid">
             </p>
            
             <p>{{ $post->content }}</p>
@@ -33,6 +33,7 @@
                 <a href="#" class="tag-cloud-link">Sport</a>
                 <a href="#" class="tag-cloud-link">Tech</a>
                 <a href="#" class="tag-cloud-link">Travel</a>
+                <a href="{{ route('index.page')}}" class="tag-cloud-link">Blog</a>
               </div>
             </div>
             {{-- End Tags start --}}

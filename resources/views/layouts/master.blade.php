@@ -34,7 +34,7 @@
 
 				<div class="collapse navbar-collapse" id="ftco-nav">
 					<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="{{ route('index.page')}}" class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 					<li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
 					<li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>

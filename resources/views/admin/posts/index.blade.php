@@ -35,31 +35,24 @@
                               <a href="{{ route('posts.edit',['post' => $post->id])}}" class="btn btn-warning">Edit</a>
                             </td>
                             <td>
-                              <a href="" class="btn btn-danger">Delete</a>
+                              <form action="{{ route('posts.destroy', $post->id )}}" method="POST">
+                                @method('DELETE')
+                                @csrf 
+
+
+                                  <input type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger" value="Delete" class="btn btn-danger">
+                              </form>
                             </td>
                         </tr>
                       @endforeach
                       </table>
                     </div>
                   </div>
-                  <div class="card-footer text-right">
-                    <nav class="d-inline-block">
-                      <ul class="pagination mb-0">
-                        <li class="page-item disabled">
-                          <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1 <span
-                              class="sr-only">(current)</span></a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
+
+                  
+                  {{ $posts->links('vendor.pagination.bootstrap-5') }}
+                  
+
                 </div>
             </div>
 

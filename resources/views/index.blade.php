@@ -388,7 +388,7 @@
 			
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry justify-content-end">
-					<a href="single.html" class="block-20" style="background-image: url('{{ asset ('assets/images/image_1.jpg')}}');">
+					<a href="{{ route('single.page', $post->id)}}" class="block-20" style="background-image: url('{{ asset ('storage/'.$post->image)}}');">
 					</a>
 					<div class="text mt-3 float-right d-block">
 						<div class="d-flex align-items-center mb-3 meta">
