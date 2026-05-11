@@ -27,7 +27,7 @@
                               <img width="100px;" src="{{ asset('storage/'.$post->image)}}" alt="">
                             </td>
                             <td>{{ $post->short_content }}</td>
-                            <td>{{ $post->content }}</td>
+                            <td>{{ Str::limit($post->content,100) }}</td>
                             <td>
                               <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
                             </td>
