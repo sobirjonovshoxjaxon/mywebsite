@@ -33,8 +33,9 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Short Content</label>
                             <div class="input-group mb-2">
-                                <input name="short_content" type="text" class="form-control" id="inlineFormInputGroup" placeholder="Short_content    ">
+                                <input name="short_content" type="text" class="form-control" id="inlineFormInputGroup">
                             </div>
                             @error('short_content')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -42,6 +43,37 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Category</label>
+                            <div class="input-group mb-2">
+                                <select name="category_id" id="">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('short_content')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <div class="input-group mb-2">
+                                <select name="tags[]" id="" multiple>
+                                    @foreach ($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                            @error('short_content')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Content</label>
                             <div class="input-group mb-2">
                                 <textarea name="content" class="form-control"></textarea>
                             </div>

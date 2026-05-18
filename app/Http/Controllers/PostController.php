@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -24,7 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.create',compact('categories','tags'));
     }
 
     /**
@@ -32,7 +36,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-
+        dd($request->all());
        if($request->hasFile('image')){
 
             $fileName = $request->file('image')->getClientOriginalName();

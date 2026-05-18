@@ -113,10 +113,11 @@
             <div class="sidebar-box ftco-animate">
             	<h3 class="heading-sidebar">Categories</h3>
               <ul class="categories">
-                <li><a href="#">Interior Design <span>(12)</span></a></li>
-                <li><a href="#">Exterior Design <span>(22)</span></a></li>
-                <li><a href="#">Industrial Design <span>(37)</span></a></li>
-                <li><a href="#">Landscape Design <span>(42)</span></a></li>
+
+                @foreach ($categories as $category)
+                  <li><a href="#">{{ $category->category }}<span>(12)</span></a></li>
+                @endforeach
+               
               </ul>
             </div>
 

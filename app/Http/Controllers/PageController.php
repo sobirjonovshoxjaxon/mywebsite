@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PageController extends Controller
 {
@@ -15,6 +16,7 @@ class PageController extends Controller
 
     public function single(Post $post){
 
-        return view('single',compact('post'));
+        $categories = Category::all();
+        return view('single',compact('post', 'categories'));
     }
 }

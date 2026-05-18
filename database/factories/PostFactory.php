@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'image' => 'post-photos/spark.jpg',
             'content' => fake()->paragraphs(15,true),
             'user_id' => 1, 
+            'category_id' => rand(1,4),
         ];
     }
 }
