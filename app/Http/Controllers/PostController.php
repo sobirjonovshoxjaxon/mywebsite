@@ -36,7 +36,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        dd($request->all());
        if($request->hasFile('image')){
 
             $fileName = $request->file('image')->getClientOriginalName();
@@ -46,11 +45,21 @@ class PostController extends Controller
         $post = Post::create([
 
             'user_id' => Auth::id(),
+            'category_id' => $request->category_id,
             'title' => $request->title,
             'image' => $path ?? 'avatar.jpg',
             'short_content' => $request->short_content,
             'content' => $request->content,
         ]);
+
+        // Creating Tags 
+        if(isset($request->tags)){
+
+            foreach($request->tags as $tag){
+                $post->tags()->attach($tag);
+            }
+        }
+        
 
         return to_route('posts.index');
        

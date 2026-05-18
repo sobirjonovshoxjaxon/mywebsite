@@ -42,7 +42,13 @@
 					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
 					<li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
 					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-					<li class="nav-item"><a href="{{ route('login')}}" class="nav-link"><span>Login</span></a></li>
+
+          @auth
+            <li class="nav-item"><a href="{{ route('logout.page')}}" class="nav-link"><span>Logout</span></a></li>
+          @else 
+            <li class="nav-item"><a href="{{ route('login')}}" class="nav-link"><span>Login</span></a></li>
+
+          @endauth
 					</ul>
 				</div>
 			</div>

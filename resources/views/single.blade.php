@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
           <div class="col-md-12 ftco-animate pb-5 mb-3 text-center">
-            <h1 class="mb-3 bread">Author name:John</h1>
+            <h1 class="mb-3 bread">{{ auth()->user()->name }}</h1>
             <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('index.page')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
@@ -42,10 +42,10 @@
             {{-- Creater of post --}}
             <div class="about-author d-flex p-4 bg-dark">
               <div class="bio mr-5">
-                <img src="{{ asset ('assets/images/person_1.jpg')}}" alt="Image placeholder" class="img-fluid mb-4">
+                <img src="{{ asset ('storage/'.$post->user->image )}}" alt="Image placeholder" class="img-fluid mb-4">
               </div>
               <div class="desc">
-                <h3>George Washington</h3>
+                <h3>{{ $post->user->name }}</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
               </div>
             </div>
@@ -54,7 +54,7 @@
 
 
             <div class="pt-5 mt-5">
-              <h3 class="mb-5">6 Comments</h3>
+              <h3 class="mb-5">{{ $post->comments->count() }} Comments</h3>
               <ul class="comment-list">
 
                 @foreach ($post->comments as $comment)
@@ -62,7 +62,7 @@
                 
                   <li class="comment">
                     <div class="vcard bio">
-                      <img src="{{ asset ('assets/images/person_1.jpg')}}" alt="Image placeholder">
+                      <img src="{{ asset ('storage/'.$comment->user->image)}}" alt="Image placeholder">
                     </div>
                     <div class="comment-body">
                       <h3>{{ $comment->user->name }}</h3>
@@ -82,22 +82,39 @@
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
 
-                <form action="{{ route('comments.store')}}" class="p-5 bg-dark" method="POST">
-                  @csrf 
+                @auth
+                  
+                  <form action="{{ route('comments.store')}}" class="p-5 bg-dark" method="POST">
+                    @csrf 
 
-                  <input type="hidden" name="post_id" value="{{ $post->id }}"> 
+                    <input type="hidden" name="post_id" value="{{ $post->id }}"> 
 
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="body" id="message" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                  </div>
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea name="body" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                    </div>
 
-                </form>
+                  </form>
+
+                  @else 
+
+                 <div class="d-flex">
+                    <p>Would you like write a comment? Let's </p>
+                    <p> - </p>
+                    <a href="{{ route('register')}}"> Register</a>
+                    <a href="{{ route('login')}}"> Login</a>
+                 </div>
+
+                  
+
+                @endauth
 
               </div>
+
+
             </div>
 
           </div> <!-- .col-md-8 -->
@@ -115,7 +132,7 @@
               <ul class="categories">
 
                 @foreach ($categories as $category)
-                  <li><a href="#">{{ $category->category }}<span>(12)</span></a></li>
+                  <li><a href="#">{{ $category->category }}<span>{{ $category->posts->count() }}</span></a></li>
                 @endforeach
                
               </ul>
@@ -161,14 +178,13 @@
             <div class="sidebar-box ftco-animate">
               <h3 class="heading-sidebar">Tag Cloud</h3>
               <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">house</a>
-                <a href="#" class="tag-cloud-link">office</a>
-                <a href="#" class="tag-cloud-link">building</a>
-                <a href="#" class="tag-cloud-link">land</a>
-                <a href="#" class="tag-cloud-link">table</a>
-                <a href="#" class="tag-cloud-link">interior</a>
-                <a href="#" class="tag-cloud-link">exterior</a>
-                <a href="#" class="tag-cloud-link">industrial</a>
+
+                @foreach ($post->tags as $tag)
+
+                  <a href="#" class="tag-cloud-link">{{ $tag->tag }}</a>
+                @endforeach
+               
+              
               </div>
             </div>
 

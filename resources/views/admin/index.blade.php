@@ -2,7 +2,13 @@
 @section('content')
            
             
-            <h1>This is Admin Panel</h1>
+           @auth
+                <h1>Welcome {{ auth()->user()->name }}</h1>
+
+                @else
+
+                <h1>I see who you are!</h1>
+           @endauth
            
 @endsection    
          

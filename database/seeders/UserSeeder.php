@@ -20,7 +20,6 @@ class UserSeeder extends Seeder
             'email' => 'shoxjaxonsobirjonov77@gmail.com',
             'password' => Hash::make('87654321'),
             'usertype' => 'admin',
-            'user_id' => 1,
             'image' => 'storage/avatar.jpg',
         ]);
     }
