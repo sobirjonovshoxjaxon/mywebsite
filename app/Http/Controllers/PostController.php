@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -26,6 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         $categories = Category::all();
         $tags = Tag::all();
         return view('admin.posts.create',compact('categories','tags'));
@@ -69,7 +71,10 @@ class PostController extends Controller
      * Display the specified resource.
      */
     public function show(Post $post)
-    {
+    {   
+        Gate::authorize('show', $post);
+
+
         return view('admin.posts.show',compact('post'));
     }
 
@@ -78,6 +83,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        Gate::authorize('update', $post);
+
         return view('admin.posts.edit', compact('post'));
     }
 
@@ -86,6 +93,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+
         if($request->hasFile('image')){
 
            if(isset($post->image)){
@@ -114,6 +122,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        Gate::authorize('delete', $post);
+
+
        if($post->image != ""){
             Storage::delete($post->image);
        }

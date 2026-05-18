@@ -28,21 +28,28 @@
                             </td>
                             <td>{{ $post->short_content }}</td>
                             <td>{{ Str::limit($post->content,100) }}</td>
-                            <td>
-                              <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
-                            </td>
-                            <td>
-                              <a href="{{ route('posts.edit',['post' => $post->id])}}" class="btn btn-warning">Edit</a>
-                            </td>
-                            <td>
-                              <form action="{{ route('posts.destroy', $post->id )}}" method="POST">
-                                @method('DELETE')
-                                @csrf 
+
+                            @canany(['update', 'delete', 'show'], $post)
+                                
+                           
+                              <td>
+                                <a href="{{ route('posts.show',['post' => $post->id])}}" class="btn btn-primary">Show</a>
+                              </td>
+                              <td>
+                                <a href="{{ route('posts.edit',['post' => $post->id])}}" class="btn btn-warning">Edit</a>
+                              </td>
+                              <td>
+                                <form action="{{ route('posts.destroy', $post->id )}}" method="POST">
+                                  @method('DELETE')
+                                  @csrf 
 
 
-                                  <input type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger" value="Delete" class="btn btn-danger">
-                              </form>
-                            </td>
+                                    <input type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger" value="Delete" class="btn btn-danger">
+                                </form>
+                              </td>
+
+                            @endcanany
+                            
                         </tr>
                       @endforeach
                       </table>
