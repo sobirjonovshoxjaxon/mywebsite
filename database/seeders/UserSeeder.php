@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('87654321'),
             'usertype' => 'admin',
             'user_id' => 1,
+            'image' => 'storage/avatar.jpg',
         ]);
     }
 }

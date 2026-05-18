@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,8 +21,21 @@ Route::get('logout',[AdminController::class, 'logout'])->name('logout.page');
 Route::get('admin/index',[AdminController::class, 'index'])->name('admin.index');
 
 
+// UserController 
+Route::resource('/users', UserController::class);
+
+// CategoryController 
+Route::resource('/categories', CategoryController::class);
+
 //PostController 
 Route::resource('/posts', PostController::class);
+
+//CommentController 
+Route::resource('/comments',CommentController::class);
+
+// TagController 
+Route::resource('tags',TagController::class);
+
 
 
 
@@ -36,3 +53,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+

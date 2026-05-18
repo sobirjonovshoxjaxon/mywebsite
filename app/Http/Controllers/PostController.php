@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -40,6 +41,7 @@ class PostController extends Controller
       
         $post = Post::create([
 
+            'user_id' => Auth::id(),
             'title' => $request->title,
             'image' => $path ?? 'avatar.jpg',
             'short_content' => $request->short_content,

@@ -68,7 +68,10 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="briefcase"></i><span>Tables</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('posts.index')}}">Post</a></li>
+                <li><a class="nav-link" href="{{ route('categories.index')}}">Category</a></li>
+                <li><a class="nav-link" href="{{ route('tags.index')}}">Tags</a></li>
+                <li><a class="nav-link" href="{{ route('posts.index')}}">Posts</a></li>
+                <li><a class="nav-link" href="{{ route('users.index')}}">Users</a></li>
               </ul>
             </li>
           
